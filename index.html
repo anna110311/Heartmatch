@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HeartMatch – Coming Soon!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fff5f8;
+      font-family: 'Nunito', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .logo {
+      max-width: 180px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      color: #3b3c56;
+      font-size: 2.8rem;
+      margin: 0.2em 0;
+    }
+    p {
+      font-size: 1.2rem;
+      color: #6b6c82;
+      margin-bottom: 20px;
+    }
+    .countdown {
+      font-size: 1.5rem;
+      color: #ff5f8f;
+      margin-bottom: 30px;
+    }
+    input[type="email"] {
+      padding: 10px;
+      width: 250px;
+      border: 2px solid #ff91b6;
+      border-radius: 8px;
+      margin-right: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #ff91b6;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #ff75a6;
+    }
+    .socials {
+      margin-top: 30px;
+    }
+    .socials a {
+      margin: 0 10px;
+      color: #ff91b6;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #ff91b6;
+      clip-path: path('M10 30 A10 10 0 1 1 30 10 Q20 0 10 10 Q0 0 10 10 A10 10 0 1 1 10 30');
+      animation: float 6s infinite ease-in-out;
+      opacity: 0.3;
+    }
+    .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .heart:nth-child(2) { left: 25%; animation-delay: 2s; }
+    .heart:nth-child(3) { left: 50%; animation-delay: 4s; }
+    .heart:nth-child(4) { left: 70%; animation-delay: 1s; }
+    .heart:nth-child(5) { left: 90%; animation-delay: 3s; }
+
+    @keyframes float {
+      0% { bottom: -20px; opacity: 0.3; }
+      50% { opacity: 0.6; }
+      100% { bottom: 100vh; opacity: 0; }
+    }
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.9rem;
+      color: #a3a3a3;
+    }
+  </style>
+</head>
+<body>
+  <div class="heart"></div>
+  <div class="heart"></div>
+  <div class="heart"></div>
+  <div class="heart"></div>
+  <div class="heart"></div>
+  <img src="A_logo_for_a_dating_app_or_matchmaking_service_nam.png" alt="HeartMatch Logo" class="logo" />
+  <h1>HeartMatch is Coming Soon 💘</h1>
+  <p>Find love across borders. HeartMatch connects hearts worldwide! 🌍💞</p>
+  <div class="countdown" id="countdown"></div>
+  <form>
+    <input type="email" placeholder="Enter your email" required />
+    <button type="submit">Notify Me</button>
+  </form>
+  <div class="socials">
+    <a href="#">Instagram</a>
+    <a href="#">Facebook</a>
+    <a href="#">TikTok</a>
+  </div>
+  <footer>
+    &copy; 2025 HeartMatch. All rights reserved.
+  </footer>
+
+  <script>
+    const countdown = document.getElementById('countdown');
+    const launchDate = new Date("June 15, 2025 00:00:00").getTime();
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = launchDate - now;
+
+      if (distance < 0) {
+        countdown.innerHTML = "We are live!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s until launch`;
+    };
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
