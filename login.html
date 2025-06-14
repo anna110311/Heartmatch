@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login – HeartMatch</title>
+  <link rel="stylesheet" href="style.css" />
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAWMTrE5C0O-2oLkq0yRGO2uamVNUzFqq0",
+      authDomain: "heartmatch-bd8cc.firebaseapp.com",
+      projectId: "heartmatch-bd8cc",
+      storageBucket: "heartmatch-bd8cc.firebasestorage.app",
+      messagingSenderId: "128650758470",
+      appId: "1:128650758470:web:75aa01b2fe022ef9073d47",
+      measurementId: "G-3DYXPYGDH3"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    window.login = async function () {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      try {
+        await signInWithEmailAndPassword(auth, email, password);
+        alert("Welcome back! 💕 Redirecting...");
+        window.location.href = "home.html";
+      } catch (error) {
+        alert("Login failed: " + error.message);
+      }
+    };
+  </script>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #fff0f5;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      color: #ff66b2;
+    }
+    input {
+      display: block;
+      margin: 15px auto;
+      padding: 10px;
+      width: 80%;
+      max-width: 300px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    button {
+      background-color: #ff66b2;
+      color: white;
+      padding: 10px 30px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ff3385;
+    }
+  </style>
+</head>
+<body>
+  <h1>Login to HeartMatch 💘</h1>
+  <input type="email" id="email" placeholder="Your email" />
+  <input type="password" id="password" placeholder="Password" />
+  <button onclick="login()">Login</button>
+  <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+</body>
+</html>
