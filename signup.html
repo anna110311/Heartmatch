@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HeartMatch Sign Up</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" href="icon.png" />
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <style>
+    body {
+      background: #fff0f6;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #ff4d88;
+    }
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 400px;
+      margin: auto;
+    }
+    input {
+      padding: 10px;
+      width: 90%;
+      margin-bottom: 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #ff4d88;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+    }
+    a {
+      color: #ff4d88;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>💖 HeartMatch Sign Up</h1>
+  <form id="signupForm">
+    <input type="email" id="email" placeholder="Email" required /><br/>
+    <input type="password" id="password" placeholder="Password" required /><br/>
+    <button type="submit">Sign Up</button>
+  </form>
+  <p>Already have an account? <a href="login.html">Login here</a></p>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyAWMTrE5C0O-2oLkq0yRGO2uamVNUzFqq0",
+      authDomain: "heartmatch-bd8cc.firebaseapp.com",
+      projectId: "heartmatch-bd8cc",
+      storageBucket: "heartmatch-bd8cc.firebasestorage.app",
+      messagingSenderId: "128650758470",
+      appId: "1:128650758470:web:75aa01b2fe022ef9073d47",
+      measurementId: "G-3DYXPYGDH3"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    document.getElementById("signupForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      auth.createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          alert("Signed up successfully!");
+          window.location.href = "login.html";
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
+    });
+  </script>
+</body>
+</html>
